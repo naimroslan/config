@@ -30,14 +30,20 @@
     {
       "host": "46.202.164.183",
       "username": "root",
-      "nickname": "backend",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"]
+      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "projects": [
+        {
+          "paths": ["/root/waba-agent-state-machine/"]
+        }
+      ],
+      "nickname": "backend"
     },
     {
       "host": "62.72.13.169",
       "username": "root",
-      "nickname": "dev-api",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"]
+      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "projects": [],
+      "nickname": "dev-api"
     }
   ]
 }
