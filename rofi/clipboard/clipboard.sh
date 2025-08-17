@@ -7,6 +7,20 @@ db="$HOME/.clipboard.sqlite"
 table="c"
 id_col="id"
 
+# Create database and table if database file doesn't exist
+if [ ! -f "$db" ]; then
+    sqlite3 "$db" "
+    CREATE TABLE $table (
+        $id_col INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        contents text
+    );
+    CREATE TRIGGER rotate_rows AFTER INSERT ON $table
+    BEGIN
+        DELETE FROM $table WHERE $id_col <= (SELECT $id_col FROM $table ORDER BY $id_col DESC LIMIT 1000, 1);
+    END;
+    "
+fi
+
 # Prune clipboard history to only the latest $limit entries
 sqlite3 "$db" "
 DELETE FROM $table
