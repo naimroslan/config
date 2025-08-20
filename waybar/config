@@ -9,7 +9,7 @@
     "spacing": 0,
     "modules-left": ["custom/power", "custom/search", "hyprland/workspaces"],
     "modules-center": [],
-    "modules-right": ["tray", "cpu", "custom/gpu", "memory", "disk", "network", "custom/sound", "clock"],
+    "modules-right": ["tray", "cpu", "custom/gpu", "memory", "disk", "battery", "network", "custom/sound", "clock"],
 
     "custom/power": {
         "format": "󰐥 ",
@@ -83,6 +83,20 @@
         "format": "󰕾",
         "tooltip": "Sound Control",
         "on-click": "pavucontrol",
+    },
+
+    "battery": {
+        "interval": 1,
+        "format": "󰁹 {capacity:>3}%",
+        "format-charging": "󰂄 {capacity:>3}%",
+        "format-plugged": "󰂄 {capacity:>3}%",
+        "format-critical": "󰂃 {capacity:>3}%",
+        "tooltip-format": "Battery: {capacity}% ({time})",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "max-length": 10,
     },
 
     "clock": {
