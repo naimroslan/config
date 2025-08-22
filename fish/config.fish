@@ -18,7 +18,7 @@ function fish_greeting
     # fastfetch
 end
 
-# Only run tmux in a pure TTY (no X11/Wayland session)
-if test -z "$DISPLAY" -a -z "$WAYLAND_DISPLAY"
-    run_tmux
-end
+# # Only run tmux in a pure TTY (no X11/Wayland session)
+# if test -z "$DISPLAY" -a -z "$WAYLAND_DISPLAY"
+#     run_tmux
+# end
