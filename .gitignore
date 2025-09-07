@@ -16,9 +16,13 @@
 !hypr/**
 !rofi/
 !rofi/**
+!tmux/
+!tmux/**
 !setup/
 !setup/**
 !waybar/
 !waybar/**
 !swaylock/
 !swaylock/**
+
+fish/fish_variables
