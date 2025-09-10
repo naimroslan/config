@@ -1,4 +1,4 @@
 function zedd --description 'Runs zed and close the terminal'
-    cursor $argv
+    zed $argv
     exit
 end
