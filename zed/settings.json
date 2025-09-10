@@ -31,13 +31,25 @@
     {
       "host": "178.128.111.225",
       "username": "root",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "args": [
+        "-i",
+        "~/.ssh/adrian_rooftop_ed25519"
+      ],
       "projects": [
         {
-          "paths": ["/root/Vera-Plugboard"]
+          "paths": [
+            "/root"
+          ]
         },
         {
-          "paths": ["/root/plugboard-service"]
+          "paths": [
+            "/root/Vera-Plugboard"
+          ]
+        },
+        {
+          "paths": [
+            "/root/plugboard-service"
+          ]
         }
       ],
       "nickname": "plugboard"
@@ -45,10 +57,15 @@
     {
       "host": "46.202.164.183",
       "username": "root",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "args": [
+        "-i",
+        "~/.ssh/adrian_rooftop_ed25519"
+      ],
       "projects": [
         {
-          "paths": ["/root/waba-agent-state-machine/"]
+          "paths": [
+            "/root/waba-agent-state-machine/"
+          ]
         }
       ],
       "nickname": "backend"
@@ -56,7 +73,10 @@
     {
       "host": "62.72.13.169",
       "username": "root",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "args": [
+        "-i",
+        "~/.ssh/adrian_rooftop_ed25519"
+      ],
       "projects": [],
       "nickname": "dev-api"
     }
