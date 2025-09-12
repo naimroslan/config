@@ -64,6 +64,11 @@
       "projects": [
         {
           "paths": [
+            "/root/authentik"
+          ]
+        },
+        {
+          "paths": [
             "/root/waba-agent-state-machine/"
           ]
         }
