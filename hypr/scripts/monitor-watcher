@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+
+# Monitor watcher script for Hyprland
+# Detects when HDMI-A-1 is connected/disconnected and switches waybar output accordingly
+
+# Function to check if HDMI-A-1 is connected
+is_hdmi_connected() {
+    hyprctl monitors | grep -q "HDMI-A-1"
+}
+
+# Function to check current waybar output
+get_current_output() {
+    grep '"output":' "$HOME/.config/waybar/config" | sed 's/.*"output": "\([^"]*\)".*/\1/'
+}
+
+# Initial state
+was_hdmi_connected=$(is_hdmi_connected && echo "true" || echo "false")
+
+# Monitor loop
+while true; do
+    is_hdmi_connected=$(is_hdmi_connected && echo "true" || echo "false")
+    current_output=$(get_current_output)
+
+    # HDMI was disconnected
+    if [ "$was_hdmi_connected" = "true" ] && [ "$is_hdmi_connected" = "false" ]; then
+        if [ "$current_output" = "HDMI-A-1" ]; then
+            ~/.config/hypr/scripts/switch-to-edp
+        fi
+    fi
+
+    # HDMI was connected
+    if [ "$was_hdmi_connected" = "false" ] && [ "$is_hdmi_connected" = "true" ]; then
+        if [ "$current_output" = "eDP-1" ]; then
+            ~/.config/hypr/scripts/switch-to-hdmi
+        fi
+    fi
+
+    was_hdmi_connected="$is_hdmi_connected"
+    sleep 1
+done
