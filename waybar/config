@@ -20,7 +20,6 @@
         "memory",
         "disk",
         "battery",
-        "network",
         "custom/sound",
         "clock"
     ],
@@ -77,11 +76,6 @@
         "spacing": 24,
         "show-passive-items": true,
         "reverse-direction": false
-    },
-    "network": {
-        "format": "󰖩",
-        "tooltip": "Network Settings",
-        "on-click": "nm-connection-editor"
     },
     "custom/sound": {
         "format": "󰕾",
