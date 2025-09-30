@@ -10,36 +10,31 @@ if [ -n "$MONITOR" ]; then
     # Set external monitor to best resolution and refresh rate
     hyprctl keyword monitor "$MONITOR, 1920x1080@${REFRESH_RATE}, 1920x0, 1"
 
-    # Move all numbered workspaces 1-10 to external monitor
-    for i in {1..10}; do
-        hyprctl dispatch moveworkspacetomonitor "$i $MONITOR"
+    # Get all workspace IDs and move them to external monitor
+    WORKSPACES=$(hyprctl workspaces | grep "workspace ID" | awk '{print $3}' | sed 's/://')
+
+    for workspace in $WORKSPACES; do
+        # Skip workspace 11 (keep on laptop)
+        if [ "$workspace" != "11" ]; then
+            hyprctl dispaworkspacetch moveworkspacetomonitor "$workspace $MONITOR"
+        fi
     done
 
-    # Move all letter workspaces to external monitor
-    for letter in {A..Z}; do
-        hyprctl dispatch moveworkspacetomonitor "$letter $MONITOR"
-    done
-
-    # Ensure workspace 11 stays on laptop
-    hyprctl dispatch moveworkspacetomonitor "11 eDP-1"
+    # Ensure workspace 11 stays on laptop (if it exists)
+    if hyprctl workspaces | grep -q "workspace ID 11"; then
+        hyprctl dispatch moveworkspacetomonitor "11 eDP-1"
+    fi
 
     # Focus the external monitor
     hyprctl dispatch focusmonitor "$MONITOR"
 else
-    echo "No external monitor found, moving all workspaces to laptop display"
+    # Get all workspace IDs and move them to laptop
+    WORKSPACES=$(hyprctl workspaces | grep "workspace ID" | awk '{print $3}' | sed 's/://')
 
-    # Move all numbered workspaces to laptop
-    for i in {1..10}; do
-        hyprctl dispatch moveworkspacetomonitor "$i eDP-1"
+    for workspace in $WORKSPACES; do
+        echo "Moving workspace $workspace to eDP-1"
+        hyprctl dispatch moveworkspacetomonitor "$workspace eDP-1"
     done
-
-    # Move all letter workspaces to laptop
-    for letter in {A..Z}; do
-        hyprctl dispatch moveworkspacetomonitor "$letter eDP-1"
-    done
-
-    # Ensure workspace 11 stays on laptop
-    hyprctl dispatch moveworkspacetomonitor "11 eDP-1"
 
     # Focus the laptop monitor
     hyprctl dispatch focusmonitor "eDP-1"
