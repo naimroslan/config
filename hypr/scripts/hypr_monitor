@@ -4,36 +4,28 @@
 MONITOR=$(hyprctl monitors | grep -E "DP-2|DP-3|HDMI-A-1" | head -1 | awk '{print $2}' | sed 's/://')
 
 if [ -n "$MONITOR" ]; then
-    # Get the highest refresh rate for 1920x1080 resolution
-    REFRESH_RATE=$(wlr-randr | grep -A 20 "$MONITOR" | grep "1920x1080 px," | grep -o '[0-9]\+\.[0-9]\+' | sort -nr | head -1)
+    # Set external monitor to highest resolution and refresh rate with automatic positioning
+    hyprctl keyword monitor "$MONITOR, highres@highrr, auto, 1"
 
-    # Set external monitor to best resolution and refresh rate
-    hyprctl keyword monitor "$MONITOR, 1920x1080@${REFRESH_RATE}, 1920x0, 1"
-
-    # Get all workspace IDs and move them to external monitor
-    WORKSPACES=$(hyprctl workspaces | grep "workspace ID" | awk '{print $3}' | sed 's/://')
+    # Get all workspace names and move them to external monitor
+    WORKSPACES=$(hyprctl workspaces | grep "workspace ID" | awk '{print $4}' | sed 's/[():]//g')
 
     for workspace in $WORKSPACES; do
         # Skip workspace 11 (keep on laptop)
         if [ "$workspace" != "11" ]; then
-            hyprctl dispaworkspacetch moveworkspacetomonitor "$workspace $MONITOR"
+            hyprctl dispatch moveworkspacetomonitor "$workspace" "$MONITOR"
         fi
     done
-
-    # Ensure workspace 11 stays on laptop (if it exists)
-    if hyprctl workspaces | grep -q "workspace ID 11"; then
-        hyprctl dispatch moveworkspacetomonitor "11 eDP-1"
-    fi
 
     # Focus the external monitor
     hyprctl dispatch focusmonitor "$MONITOR"
 else
-    # Get all workspace IDs and move them to laptop
-    WORKSPACES=$(hyprctl workspaces | grep "workspace ID" | awk '{print $3}' | sed 's/://')
+    # Get all workspace names and move them to laptop
+    WORKSPACES=$(hyprctl workspaces | grep "workspace ID" | awk '{print $4}' | sed 's/[():]//g')
 
     for workspace in $WORKSPACES; do
         echo "Moving workspace $workspace to eDP-1"
-        hyprctl dispatch moveworkspacetomonitor "$workspace eDP-1"
+        hyprctl dispatch moveworkspacetomonitor "$workspace" "eDP-1"
     done
 
     # Focus the laptop monitor
