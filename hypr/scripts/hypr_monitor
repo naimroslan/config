@@ -4,13 +4,8 @@
 MONITOR=$(hyprctl monitors | grep -E "DP-2|DP-3|HDMI-A-1" | head -1 | awk '{print $2}' | sed 's/://')
 
 if [ -n "$MONITOR" ]; then
-    echo "Found external monitor: $MONITOR"
-    echo "Moving all workspaces to $MONITOR (except workspace 11)"
-
     # Get the highest refresh rate for 1920x1080 resolution
     REFRESH_RATE=$(wlr-randr | grep -A 20 "$MONITOR" | grep "1920x1080 px," | grep -o '[0-9]\+\.[0-9]\+' | sort -nr | head -1)
-
-    echo "Using best mode: 1920x1080 @ ${REFRESH_RATE}Hz"
 
     # Set external monitor to best resolution and refresh rate
     hyprctl keyword monitor "$MONITOR, 1920x1080@${REFRESH_RATE}, 1920x0, 1"

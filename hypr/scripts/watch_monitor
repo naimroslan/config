@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
 # Watch for display changes and run monitor scripts
-echo "Starting monitor watcher..."
 
 # Function to run monitor scripts
 run_monitor_scripts() {
-    echo "Display change detected, running monitor scripts..."
     ~/.config/hypr/scripts/hypr_monitor
     ~/.config/hypr/scripts/waybar_monitor
 }
@@ -19,7 +17,6 @@ while true; do
     while true; do
         NEW_MONITORS=$(hyprctl monitors | grep -c "Monitor")
         if [ "$CURRENT_MONITORS" != "$NEW_MONITORS" ]; then
-            echo "Monitor count changed from $CURRENT_MONITORS to $NEW_MONITORS"
             run_monitor_scripts
             CURRENT_MONITORS=$NEW_MONITORS
             break
