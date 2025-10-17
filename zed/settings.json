@@ -1,12 +1,37 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "language_models": {
+    "openai_compatible": {
+      "Qwen Model": {
+        "api_url": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        "available_models": [
+          {
+            "name": "qwen-plus",
+            "max_tokens": 1000000,
+            "max_output_tokens": 32768,
+            "max_completion_tokens": 1000000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          },
+          {
+            "name": "qwen-max",
+            "max_tokens": 32768,
+            "max_output_tokens": 8192,
+            "max_completion_tokens": 30720,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          }
+        ]
+      }
+    }
+  },
   "icon_theme": "Material Icon Theme",
   "agent": {
     "default_profile": "write",
@@ -14,8 +39,8 @@
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-5-mini"
+      "provider": "Qwen Model",
+      "model": "qwen-plus"
     }
   },
   "ui_font_size": 14,
@@ -27,7 +52,32 @@
     "dark": "One Dark Pro"
   },
   "autosave": "on_focus_change",
+  "languages": {
+    "Python": {
+      "language_servers": ["basedpyright"]
+    }
+  },
+  "lsp": {
+    "basedpyright": {
+      "settings": {
+        "basedpyright": {
+          "typeCheckingMode": "strict"
+        }
+      }
+    }
+  },
   "ssh_connections": [
+    {
+      "host": "192.168.68.149",
+      "username": "rooftop",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/rooftop"]
+        }
+      ],
+      "nickname": "dev server"
+    },
     {
       "host": "178.128.111.225",
       "username": "root",
