@@ -39,8 +39,8 @@
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "Qwen Model",
-      "model": "qwen-plus"
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-latest"
     }
   },
   "ui_font_size": 14,
@@ -73,7 +73,9 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/rooftop"]
+          "paths": [
+            "/home/rooftop"
+          ]
         }
       ],
       "nickname": "dev server"
@@ -81,16 +83,25 @@
     {
       "host": "178.128.111.225",
       "username": "root",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "args": [
+        "-i",
+        "~/.ssh/adrian_rooftop_ed25519"
+      ],
       "projects": [
         {
-          "paths": ["/root"]
+          "paths": [
+            "/root"
+          ]
         },
         {
-          "paths": ["/root/Vera-Plugboard"]
+          "paths": [
+            "/root/Vera-Plugboard"
+          ]
         },
         {
-          "paths": ["/root/plugboard-service"]
+          "paths": [
+            "/root/plugboard-service"
+          ]
         }
       ],
       "nickname": "plugboard"
@@ -98,13 +109,25 @@
     {
       "host": "46.202.164.183",
       "username": "root",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "args": [
+        "-i",
+        "~/.ssh/adrian_rooftop_ed25519"
+      ],
       "projects": [
         {
-          "paths": ["/root/authentik"]
+          "paths": [
+            "/root/authentik"
+          ]
         },
         {
-          "paths": ["/root/waba-agent-state-machine/"]
+          "paths": [
+            "/root/rooftopiq/pms-staging"
+          ]
+        },
+        {
+          "paths": [
+            "/root/waba-agent-state-machine/"
+          ]
         }
       ],
       "nickname": "backend"
@@ -112,7 +135,10 @@
     {
       "host": "62.72.13.169",
       "username": "root",
-      "args": ["-i", "~/.ssh/adrian_rooftop_ed25519"],
+      "args": [
+        "-i",
+        "~/.ssh/adrian_rooftop_ed25519"
+      ],
       "projects": [],
       "nickname": "dev-api"
     }
