@@ -7,14 +7,14 @@ db="$HOME/.clipboard.sqlite"
 
 # Initialize database if it doesn't exist
 if [ ! -f "$db" ]; then
-    sqlite3 "$db" "
-    CREATE TABLE c (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, contents text);
-    CREATE INDEX IF NOT EXISTS idx_id ON c(id DESC);
-    CREATE TRIGGER rotate_rows AFTER INSERT ON c
-    BEGIN
-        DELETE FROM c WHERE id <= (SELECT id FROM c ORDER BY id DESC LIMIT 1000, 1);
-    END;
-    "
+    sqlite3 "$db" <<EOF
+CREATE TABLE c (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, contents text);
+CREATE INDEX IF NOT EXISTS idx_id ON c(id DESC);
+CREATE TRIGGER rotate_rows AFTER INSERT ON c
+BEGIN
+    DELETE FROM c WHERE id <= (SELECT id FROM c ORDER BY id DESC LIMIT 1000, 1);
+END;
+EOF
 fi
 
 # Get preview list with optimized query
