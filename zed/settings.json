@@ -13,8 +13,8 @@
               "tools": true,
               "images": false,
               "parallel_tool_calls": false,
-              "prompt_cache_key": false
-            }
+              "prompt_cache_key": false,
+            },
           },
           {
             "name": "qwen-max",
@@ -25,12 +25,12 @@
               "tools": true,
               "images": false,
               "parallel_tool_calls": false,
-              "prompt_cache_key": false
-            }
-          }
-        ]
-      }
-    }
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
   },
   "icon_theme": "Material Icon Theme",
   "agent": {
@@ -40,8 +40,8 @@
     "model_parameters": [],
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-sonnet-4-5-latest"
-    }
+      "model": "claude-sonnet-4-5-latest",
+    },
   },
   "ui_font_size": 14,
   "buffer_font_size": 12,
@@ -49,98 +49,78 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark Pro"
+    "dark": "One Dark Pro",
   },
   "autosave": "on_focus_change",
   "languages": {
     "Python": {
-      "language_servers": ["basedpyright"]
-    }
+      "language_servers": ["basedpyright"],
+    },
   },
   "lsp": {
     "basedpyright": {
       "settings": {
         "basedpyright": {
-          "typeCheckingMode": "strict"
-        }
-      }
-    }
+          "typeCheckingMode": "strict",
+        },
+      },
+    },
   },
   "ssh_connections": [
     {
-      "host": "192.168.68.149",
-      "username": "rooftop",
+      "host": "proxmox",
+      "username": "root",
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/rooftop"
-          ]
-        }
+          "paths": ["/"],
+        },
       ],
-      "nickname": "dev server"
+      "nickname": "proxmox",
     },
     {
-      "host": "178.128.111.225",
-      "username": "root",
-      "args": [
-        "-i",
-        "~/.ssh/adrian_rooftop_ed25519"
-      ],
+      "host": "development",
+      "username": "development",
+      "args": [],
       "projects": [
         {
-          "paths": [
-            "/root"
-          ]
+          "paths": ["/home/development/"],
         },
-        {
-          "paths": [
-            "/root/Vera-Plugboard"
-          ]
-        },
-        {
-          "paths": [
-            "/root/plugboard-service"
-          ]
-        }
       ],
-      "nickname": "plugboard"
+      "nickname": "development",
     },
     {
-      "host": "46.202.164.183",
-      "username": "root",
-      "args": [
-        "-i",
-        "~/.ssh/adrian_rooftop_ed25519"
-      ],
+      "host": "staging",
+      "username": "staging",
+      "args": [],
       "projects": [
         {
-          "paths": [
-            "/root/authentik"
-          ]
+          "paths": ["/home/staging/"],
         },
-        {
-          "paths": [
-            "/root/rooftopiq/pms-staging"
-          ]
-        },
-        {
-          "paths": [
-            "/root/waba-agent-state-machine/"
-          ]
-        }
       ],
-      "nickname": "backend"
+      "nickname": "staging",
     },
     {
-      "host": "62.72.13.169",
-      "username": "root",
-      "args": [
-        "-i",
-        "~/.ssh/adrian_rooftop_ed25519"
+      "host": "production",
+      "username": "production",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/production/"],
+        },
       ],
-      "projects": [],
-      "nickname": "dev-api"
-    }
-  ]
+      "nickname": "production",
+    },
+    {
+      "host": "utility",
+      "username": "utility",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/utility/"],
+        },
+      ],
+      "nickname": "utility",
+    },
+  ],
 }
