@@ -1,4 +1,7 @@
 {
+  "terminal": {
+    "dock": "right",
+  },
   "language_models": {
     "openai_compatible": {
       "Qwen Model": {
