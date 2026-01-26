@@ -5,10 +5,14 @@ MONITOR=$(hyprctl monitors | grep -E "DP-2|DP-3|HDMI-A-1" | head -1 | awk '{prin
 
 if [ -n "$MONITOR" ]; then
     sed -i "s/\"output\": \".*\"/\"output\": \"$MONITOR\"/" ~/.config/waybar/config
+    sed -i "s/^output=.*/output=$MONITOR/" ~/.config/mako/config
     killall waybar
+    makoctl reload
     hyprctl dispatch exec waybar
 else
     sed -i "s/\"output\": \".*\"/\"output\": \"eDP-1\"/" ~/.config/waybar/config
+    sed -i "s/^output=.*/output=eDP-1/" ~/.config/mako/config
     killall waybar
+    makoctl reload
     hyprctl dispatch exec waybar
 fi
