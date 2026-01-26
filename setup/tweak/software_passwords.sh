@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo pacman -S --noconfirm rclone
 
 # Create mount point
 sudo mkdir -p /mnt/utility
@@ -13,7 +12,7 @@ Wants=network-online.target
 What=:webdav:/
 Where=/mnt/utility
 Type=rclone
-Options=rw,_netdev,allow_other,args2env,vfs-cache-mode=full,webdav-url=http://utility/
+Options=rw,_netdev,allow_other,args2env,vfs-cache-mode=full,webdav-url=https://utility/,no-check-certificate
 [Install]
 WantedBy=multi-user.target
 EOF
