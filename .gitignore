@@ -22,6 +22,10 @@
 !rofi/**
 !tmux/
 !tmux/**
+!kitty/
+!kitty/**
+!micro/
+!micro/**
 !qt6ct/
 !qt6ct/**
 !qt5ct/
@@ -37,4 +41,6 @@
 !swaylock/
 !swaylock/**
 
+micro/syntax/
+micro/backups/
 fish/fish_variables
