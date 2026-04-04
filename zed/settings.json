@@ -1,4 +1,9 @@
 {
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
   "terminal": {
     "dock": "right",
   },
@@ -35,7 +40,11 @@
       },
     },
   },
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme"
+  },
   "agent": {
     "default_profile": "write",
     "play_sound_when_agent_done": true,
@@ -52,7 +61,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark Max",
+    "dark": "Ayu Dark",
   },
   "autosave": "on_focus_change",
   "languages": {
