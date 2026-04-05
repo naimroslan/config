@@ -5,7 +5,7 @@
 # Function to run monitor scripts
 run_monitor_scripts() {
     ~/.config/hypr/scripts/hypr_monitor
-    ~/.config/hypr/scripts/waybar_monitor
+    # waybar_monitor removed — quickshell handles its own output
 }
 
 # Watch for changes in the monitor configuration

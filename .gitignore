@@ -41,6 +41,24 @@
 !swaylock/
 !swaylock/**
 
+!quickshell/
+!quickshell/**
+!swaync/
+!swaync/**
+!wal/
+!wal/**
+!templates/
+!templates/**
+!cava/
+!cava/**
+!fastfetch/
+!fastfetch/**
+!scripts/
+!scripts/**
+!starship.toml
 micro/syntax/
 micro/backups/
 fish/fish_variables
+kitty/kitty.conf.user-backup
+quickshell/app_usage.json
+quickshell/state/
